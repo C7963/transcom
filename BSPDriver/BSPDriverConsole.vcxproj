@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{7D2C0E5F-9A1B-4C3E-8D6F-2E4B0C1A9D5E}</ProjectGuid>
+    <RootNamespace>BSPDriverConsole</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>BSPDriverConsole</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)x64\ConsoleDebug\</OutDir>
+    <IntDir>$(ProjectDir)x64\ConsoleDebug\obj\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)x64\ConsoleRelease\</OutDir>
+    <IntDir>$(ProjectDir)x64\ConsoleRelease\obj\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;BSPDRIVER_EXPORTS;_HAS_STD_BYTE=0;NOMINMAX;WIN32_LEAN_AND_MEAN;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)packages\boost.1.87.0\lib\native\include;$(ProjectDir)packages\pugixml.1.15.0\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>liquid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir);</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;BSPDRIVER_EXPORTS;_HAS_STD_BYTE=0;NOMINMAX;WIN32_LEAN_AND_MEAN;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)packages\boost.1.87.0\lib\native\include;$(ProjectDir)packages\pugixml.1.15.0\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>liquidr.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir);</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="ADCConfig.h" />
+    <ClInclude Include="ADC_Api.h" />
+    <ClInclude Include="CM18_500M.h" />
+    <ClInclude Include="CommonCLI.h" />
+    <ClInclude Include="CommonManager.h" />
+    <ClInclude Include="ConvertHelper.h" />
+    <ClInclude Include="DACConfig.h" />
+    <ClInclude Include="DAC_Api.h" />
+    <ClInclude Include="DataHolder.h" />
+    <ClInclude Include="DataRead.h" />
+    <ClInclude Include="Device_Address.h" />
+    <ClInclude Include="Device_Data.h" />
+    <ClInclude Include="Device_MEM32.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="HLJS386_HL.h" />
+    <ClInclude Include="HLJS386_LL.h" />
+    <ClInclude Include="IPscanDataSink.h" />
+    <ClInclude Include="IPscanDataSource.h" />
+    <ClInclude Include="Logic_Api.h" />
+    <ClInclude Include="MultiChannel.h" />
+    <ClInclude Include="MultiCLI.h" />
+    <ClInclude Include="MultiIQ.h" />
+    <ClInclude Include="NVMe_Write.h" />
+    <ClInclude Include="PCIE_InterruptFIFO.h" />
+    <ClInclude Include="PCIE_SweepData.h" />
+    <ClInclude Include="PDW_Config.h" />
+    <ClInclude Include="PlayBack.h" />
+    <ClInclude Include="Pscan.h" />
+    <ClInclude Include="PscanApi.h" />
+    <ClInclude Include="PscanClockTables.h" />
+    <ClInclude Include="PscanDefs.h" />
+    <ClInclude Include="PscanOrder.h" />
+    <ClInclude Include="RF12.h" />
+    <ClInclude Include="RFControl.h" />
+    <ClInclude Include="RPU44.h" />
+    <ClInclude Include="RTSA.h" />
+    <ClInclude Include="RTSACLi.h" />
+    <ClInclude Include="SpectrumSweep.h" />
+    <ClInclude Include="SpectrumSweepFft.h" />
+    <ClInclude Include="Sweep.h" />
+    <ClInclude Include="SweepCLI.h" />
+    <ClInclude Include="SweepLogic.h" />
+    <ClInclude Include="Si5386A_1d2288G_100M.h" />
+    <ClInclude Include="Si5386A_1d2288G_10M.h" />
+    <ClInclude Include="Si5386A_819d2M_10M.h" />
+    <ClInclude Include="XillyFile.h" />
+    <ClInclude Include="api_def.h" />
+    <ClInclude Include="api_errors.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="jesd204_api.h" />
+    <ClInclude Include="no_os.h" />
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ADCConfig.cpp" />
+    <ClCompile Include="ADC_Api.cpp" />
+    <ClCompile Include="CM18_500M.cpp" />
+    <ClCompile Include="CommonManager.cpp" />
+    <ClCompile Include="ConvertHelper.cpp" />
+    <ClCompile Include="DACConfig.cpp" />
+    <ClCompile Include="DAC_Api.cpp" />
+    <ClCompile Include="DataHolder.cpp" />
+    <ClCompile Include="DataRead.cpp" />
+    <ClCompile Include="Device_Address.cpp" />
+    <ClCompile Include="Device_Data.cpp" />
+    <ClCompile Include="Device_MEM32.cpp" />
+    <ClCompile Include="Global.cpp" />
+    <ClCompile Include="HLJS386_HL.cpp" />
+    <ClCompile Include="HLJS386_LL.cpp" />
+    <ClCompile Include="jesd204_api.cpp" />
+    <ClCompile Include="Logic_Api.cpp" />
+    <ClCompile Include="mian.cpp" />
+    <ClCompile Include="MultiChannel.cpp" />
+    <ClCompile Include="MultiIQ.cpp" />
+    <ClCompile Include="no_os.cpp" />
+    <ClCompile Include="NVMe_Write.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="PCIE_InterruptFIFO.cpp" />
+    <ClCompile Include="PDW_Config.cpp" />
+    <ClCompile Include="PlayBack.cpp" />
+    <ClCompile Include="Pscan.cpp" />
+    <ClCompile Include="PscanApi.cpp" />
+    <ClCompile Include="PscanDataSource.cpp" />
+    <ClCompile Include="PscanOrder.cpp" />
+    <ClCompile Include="RF12.cpp" />
+    <ClCompile Include="RFControl.cpp" />
+    <ClCompile Include="RPU44.cpp" />
+    <ClCompile Include="RTSA.cpp" />
+    <ClCompile Include="SpectrumSweep.cpp" />
+    <ClCompile Include="SpectrumSweepFft.cpp" />
+    <ClCompile Include="Sweep.cpp" />
+    <ClCompile Include="SweepLogic.cpp" />
+    <ClCompile Include="xilinx_delay.cpp" />
+    <ClCompile Include="XillyFile.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(MSBuildThisFileDirectory)packages\pugixml.1.15.0\build\native\pugixml.targets" Condition="Exists('$(MSBuildThisFileDirectory)packages\pugixml.1.15.0\build\native\pugixml.targets')" />
+  </ImportGroup>
+</Project>

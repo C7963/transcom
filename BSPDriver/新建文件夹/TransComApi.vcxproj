@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{a2cc2552-d350-492d-848b-94d9310d6976}</ProjectGuid>
+    <RootNamespace>TransComApi</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>BSPDriver</ProjectName>
+    <TargetFrameworkVersion>4.7.2</TargetFrameworkVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>true</CLRSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>true</CLRSupport>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\Output\Release\x86</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\Output\debug\x86</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>.\x64\Debug</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\Output\Release\x64</OutDir>
+    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_LIB;_HAS_STD_BYTE=0;NOMINMAX;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)packages\boost.1.87.0\lib\native\include;$(ProjectDir)packages\pugixml.1.15.0\build\native\include;D:\transcom\TransComApi\ADI_NO_OS\no-OS-main\drivers\dac\ad917x\ad917x_api;D:\transcom\TransComApi\ADI_NO_OS\no-OS-main\include;D:\transcom\TransComApi\ADI_NO_OS\no-OS-main\drivers\dac\ad917x;</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_LIB;_HAS_STD_BYTE=0;NOMINMAX;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)packages\boost.1.87.0\lib\native\include;$(ProjectDir)packages\pugixml.1.15.0\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;BSPDRIVER_EXPORTS;_DEBUG;_LIB;_HAS_STD_BYTE=0;NOMINMAX;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)packages\boost.1.87.0\lib\native\include;$(ProjectDir)packages\pugixml.1.15.0\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>liquid.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir);$(OutDir);</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;BSPDRIVER_EXPORTS;NDEBUG;_LIB;_HAS_STD_BYTE=0;NOMINMAX;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)packages\boost.1.87.0\lib\native\include;$(ProjectDir)packages\pugixml.1.15.0\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>liquidr.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir);</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="ADCConfig.h" />
+    <ClInclude Include="CM18_500M.h" />
+    <ClInclude Include="CommonCLI.h" />
+    <ClInclude Include="CommonManager.h" />
+    <ClInclude Include="DACConfig.h" />
+    <ClInclude Include="DataHolder.h" />
+    <ClInclude Include="DataRead.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="HLJS386_HL.h" />
+    <ClInclude Include="HLJS386_LL.h" />
+    <ClInclude Include="MultiChannel.h" />
+    <ClInclude Include="MultiCLI.h" />
+    <ClInclude Include="MultiIQ.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="PCIE_InterruptFIFO.h" />
+    <ClInclude Include="PCIE_SweepData.h" />
+    <ClInclude Include="PlayBack.h" />
+    <ClInclude Include="PDW_Config.h" />
+    <ClInclude Include="resource2.h" />
+    <ClInclude Include="RF12.h" />
+    <ClInclude Include="RFControl.h" />
+    <ClInclude Include="RPU44.h" />
+    <ClInclude Include="RTSA.h" />
+    <ClInclude Include="RTSACLi.h" />
+    <ClInclude Include="Si5386A_819d2M_10M.h" />
+    <ClInclude Include="Si5386A_1d2288G_100M.h" />
+    <ClInclude Include="Si5386A_1d2288G_10M.h" />
+    <ClInclude Include="DAC_Api.h" />
+    <ClInclude Include="ADC_Api.h" />
+    <ClInclude Include="api_def.h" />
+    <ClInclude Include="ConvertHelper.h" />
+    <ClInclude Include="Device_Address.h" />
+    <ClInclude Include="jesd204_api.h" />
+    <ClInclude Include="Logic_Api.h" />
+    <ClInclude Include="no_os.h" />
+    <ClInclude Include="NVMe_Write.h" />
+    <ClInclude Include="Pscan.h" />
+    <ClInclude Include="PscanDefs.h" />
+    <ClInclude Include="PscanOrder.h" />
+    <ClInclude Include="IPscanDataSink.h" />
+    <ClInclude Include="IPscanDataSource.h" />
+    <ClInclude Include="PCIEDriverCLI.h" />
+    <ClInclude Include="Sweep.h" />
+    <ClInclude Include="SpectrumSweep.h" />
+    <ClInclude Include="SpectrumSweepFft.h" />
+    <ClInclude Include="SweepLogic.h" />
+    <ClInclude Include="PscanApi.h" />
+    <ClInclude Include="XillyFile.h" />
+    <ClInclude Include="Device_Data.h" />
+    <ClInclude Include="Device_MEM32.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="A.cpp" />
+    <ClCompile Include="ADCConfig.cpp" />
+    <ClCompile Include="CM18_500M.cpp" />
+    <ClCompile Include="CommonCLI.cpp" />
+    <ClCompile Include="CommonManager.cpp" />
+    <ClCompile Include="DACConfig.cpp" />
+    <ClCompile Include="DataHolder.cpp" />
+    <ClCompile Include="DataRead.cpp" />
+    <ClCompile Include="Global.cpp" />
+    <ClCompile Include="HLJS386_HL.cpp" />
+    <ClCompile Include="DAC_Api.cpp" />
+    <ClCompile Include="ADC_Api.cpp" />
+    <ClCompile Include="ConvertHelper.cpp" />
+    <ClCompile Include="HLJS386_LL.cpp" />
+    <ClCompile Include="jesd204_api.cpp" />
+    <ClCompile Include="Logic_Api.cpp" />
+    <ClCompile Include="mian.cpp" />
+    <ClCompile Include="MultiChannel.cpp" />
+    <ClCompile Include="MultiCLI.cpp" />
+    <ClCompile Include="MultiIQ.cpp" />
+    <ClCompile Include="no_os.cpp" />
+    <ClCompile Include="NVMe_Write.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="PCIEDriverCLI.cpp" />
+    <ClCompile Include="Pscan.cpp" />
+    <ClCompile Include="PscanOrder.cpp" />
+    <ClCompile Include="PscanDataSource.cpp" />
+    <ClCompile Include="PscanApi.cpp" />
+    <ClCompile Include="PCIE_InterruptFIFO.cpp" />
+    <ClCompile Include="PlayBack.cpp" />
+    <ClCompile Include="PDW_Config.cpp" />
+    <ClCompile Include="RF12.cpp" />
+    <ClCompile Include="RFControl.cpp" />
+    <ClCompile Include="RPU44.cpp" />
+    <ClCompile Include="RTSA.cpp" />
+    <ClCompile Include="RTSACLi.cpp" />
+    <ClCompile Include="Sweep.cpp" />
+    <ClCompile Include="SpectrumSweep.cpp" />
+    <ClCompile Include="SpectrumSweepFft.cpp" />
+    <ClCompile Include="SweepLogic.cpp" />
+    <ClCompile Include="xilinx_delay.cpp" />
+    <ClCompile Include="XillyFile.cpp" />
+    <ClCompile Include="Device_Address.cpp" />
+    <ClCompile Include="Device_Data.cpp" />
+    <ClCompile Include="Device_MEM32.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BSPDriver1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\TransComRealTime.Infrastructure\FilterFactor\MultiDecim1.txt" />
+    <Text Include="..\TransComRealTime.Infrastructure\FilterFactor\MultiDecim2.txt" />
+    <Text Include="..\TransComRealTime.Infrastructure\FilterFactor\MultiDecim4.txt" />
+    <Text Include="..\TransComRealTime.Infrastructure\FilterFactor\MultiDecim8.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(MSBuildThisFileDirectory)packages\pugixml.1.15.0\build\native\pugixml.targets" Condition="Exists('$(MSBuildThisFileDirectory)packages\pugixml.1.15.0\build\native\pugixml.targets')" />
+    <Import Project="$(MSBuildThisFileDirectory)packages\boost.1.87.0\build\boost.targets" Condition="Exists('$(MSBuildThisFileDirectory)packages\boost.1.87.0\build\boost.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(MSBuildThisFileDirectory)packages\pugixml.1.15.0\build\native\pugixml.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(MSBuildThisFileDirectory)packages\pugixml.1.15.0\build\native\pugixml.targets'))" />
+    <Error Condition="!Exists('$(MSBuildThisFileDirectory)packages\boost.1.87.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(MSBuildThisFileDirectory)packages\boost.1.87.0\build\boost.targets'))" />
+  </Target>
+</Project>

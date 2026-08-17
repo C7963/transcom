@@ -1,0 +1,77 @@
+========================================================
+BSPDriver PScan 读帧调试总结
+日期：2026-08-12
+========================================================
+
+【一、问题】
+1. 起始问题：硬件初始化疑似异常，需要打断点验证初始化流程。
+2. 最终目标：用 mian.cpp 走通 InitDevice -> PscanOrder::Handle -> ReadOneSpectrumFrame
+   完整链路，从 FPGA 读取一帧 PScan 频谱数据。
+3. 核心症状：
+   - InitDevice 硬件初始化全部成功（ADC PLL LOCKED、AD9175 DAC、JESD204B 正常，
+     0x000C0004 回读 0x13，匹配 C# "ADC初始化成功" 判据 bit1:0=11）。
+   - PscanOrder::Handle 配置成功（频谱点数 = 11）。
+   - ReadOneSpectrumFrame 阻塞：read0 通道 3 秒内无任何数据，
+     即 FPGA 未向 PScan 读通道输出频谱。
+
+【二、做了什么】
+1. 构建环境打通
+   - VS2022 + DevShell + msbuild 从零构建 BSPDriverConsole.vcxproj，
+     产物：x64\ConsoleDebug\BSPDriverConsole.exe。
+   - 修复 C++17 std::byte 与 Windows SDK byte 冲突
+     （预定义 _HAS_STD_BYTE=0;NOMINMAX;WIN32_LEAN_AND_MEAN）。
+
+2. 硬件初始化验证
+   - InitDevice 完整跑通：ADC PLL LOCKED、AD9175 DAC（Rev 1.1.1）、
+     Serdes/JESD 全部 lock，时钟状态 0x000B02FE=0xf。
+
+3. 阻塞根因二分定位
+   - InitDevice 后回读 0x000B02FE / 0x000C0004：OK（FPGA 响应正常）。
+   - UI 配置后回读：OK。
+   - Handle 后（扫频运行中）Mem32 回读：阻塞；停止扫频（0x00006000=0）后恢复。
+     -> 结论：FPGA 没死，这是 FPGA 扫频时 Mem32 通道的正常行为。
+   - read0 通道探测（线程 + 3 秒超时）：无数据。
+     -> 结论：FPGA 未向 PScan 读通道输出频谱。
+
+4. 与 C# 参照实现逐行对比
+   （参照工程：C:\workspace\YLL\1-Receiver\Service\3-ReceiverServer_WuWei_320M）
+   - PscanOrder::Handle     <-> DataService.cs PScan 分支：逐行一致。
+   - SpectrumSweepFft::Config <-> Utilities\SweepLogic_fft.cs：逐行一致
+     （含 FFT 参数表、Blackman 窗、FTW、0x10010000 触发、0x00006001 扫频触发）。
+   - XillyFile::read_data   <-> Xillybus\PCIE_PScanData.cs：阻塞读行为一致。
+
+5. 补齐 C# InitBaseBand 中 C++ InitDevice 缺失的寄存器
+   （已在 mian.cpp 逐次追加并测试，全部均已撤销）
+   - 0x00005000 = 0           设置通道基础值（C# L2374）
+   - 0x000C2572 = 0xC0        ADC0 Sync 手动发送（C# L2377）
+   - 0x000C0007 = 2           抽取倍数基础值（C# L2382，Handle 内 mz121 会再写 3）
+   - 0x00001040 = 0 / 1       DMA MM2S 复位 / 使能（C# L2392-2393）
+   - 0x000C0005 = 0 / 0x000C0006 = 0x4000   ADC NCO（C# L2380-2381，Fs/4=204.8MHz）
+   - UI PSCAN 模式 11 条寄存器（0x00005010/0x00005000/0x000A0000/0x000C2310/
+     0x000C2330/0x000C2336~233B）
+   - SetCenterFreq(1GHz) + RF 前端输出使能 8 条（0x000A0001/0x000A0002）
+
+6. 其他尝试（均已撤销）
+   - 探测超时 3 秒 -> 60 秒：用户判断一帧不可能这么久，方向作废。
+   - RFRBW 1000 -> 10000：对齐 C# mz121 配置。
+   - 删除 3.5 段重复写 0x00006000=1：避免重启 FPGA 扫频状态机。
+   - 确认环境干净：ReceiveDataService.Worker 服务为 Stopped，无进程占用 xillybus。
+
+【三、结果】
+当前问题尚未解决：read0 通道仍无数据，FPGA 未输出 PScan 频谱。
+
+已排除：
+  - 寄存器配置差异（已与 C# 全部对齐）
+  - 时间不足（用户确认一帧不可能几十秒）
+  - C# 服务占用设备（服务为 Stopped）
+
+仍存疑（未排查）：
+  - C++ ADCInit() 与 C# Excel 配置表（ADC9695DT config2 / JESD204DT jesd）
+    的 ADC 寄存器配置细节是否完全一致。0x000C0004=0x13 只验证了 ADC 芯片状态，
+    未验证 ADC -> FPGA 数据通路是否有效。
+  - ADC 侧 JESD204B 数据对齐是否就绪。
+
+【四、当前代码状态】
+mian.cpp 已按用户要求撤销所有调试性修改，恢复为最小测试版本：
+  InitDevice -> ctx -> PscanOrder::Handle -> ReadOneSpectrumFrame（阻塞读）。
+未重新编译。
