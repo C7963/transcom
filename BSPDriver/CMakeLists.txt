@@ -21,6 +21,14 @@ set(SOURCES
     SweepLogic.cpp
     XillyFile.cpp
     Device_MEM32.cpp
+    Device_Data.cpp
+    FfmApi.cpp
+    FfmConfigurator.cpp
+    FfmController.cpp
+    FfmDataSource.cpp
+    FfmHardwareProfile.cpp
+    FfmSpectrumProcessor.cpp
+    FfmSmokeTest.cpp
     CommonManager.cpp
     Global.cpp
     Device_Address.cpp
@@ -36,6 +44,14 @@ set(HEADERS
     SpectrumSweep.h
     IPscanDataSource.h
     IPscanDataSink.h
+    Device_Data.h
+    FfmApi.h
+    FfmConfigurator.h
+    FfmController.h
+    FfmDataSource.h
+    FfmDefs.h
+    FfmHardwareProfile.h
+    FfmSpectrumProcessor.h
 )
 
 # 创建DLL

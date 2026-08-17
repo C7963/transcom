@@ -180,10 +180,10 @@ namespace PDWCONFIG
 
 	struct Nvme_io_argus {
 		DataType type;
-		string file_name;
+		std::string file_name;
 		uint32_t span;
 		uint64_t centerfreq;
-		string file_path;
+		std::string file_path;
 		float rate;
 		bool flag;
 	};

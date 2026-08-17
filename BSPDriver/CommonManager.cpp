@@ -397,7 +397,8 @@ namespace Common {
         //BSP_INIT_BREAK("InitDevice: DACInit done");
         std::this_thread::sleep_for(1ms); 
         std::this_thread::sleep_for(1ms);
-        Device::Device_Data_RTSA::getInstance()->set_trigger_source(0);
+        // Common hardware initialization.
+        pcie_mem_->SendData(0x1001000C, 0);
         pcie_mem_->SendData(0x000D1000, 1);
         //BSP_INIT_BREAK("InitDevice: trigger source + 0x000D1000=1 done (InitDevice end)");
     }
@@ -588,7 +589,6 @@ namespace Common {
 
     void CommonManager::CloseDevice()
     {
-        Device::Device_Data_RTSA::getInstance()->Device_CloseDevice();
         Device::Device_Data_Multi::getInstance()->Device_CloseDevice();
     }
     int CommonManager::get_system_status() {
@@ -667,9 +667,6 @@ namespace Common {
             int SpanRate = 8;
             adcconfig_->set_adc_dcm((uint8_t)SpanRate);
             adcconfig_->set_adc_filter(FilterCoe_, 0x0);
-        }
-        else if (workmode == Global::WorkMode::RTSA) {
-           // RTSA 模式配置占位（与原逻辑保持对应）
         }
         else if (workmode == Global::WorkMode::STREAM) {
             // stream 模式配置占位

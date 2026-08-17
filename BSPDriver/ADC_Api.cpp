@@ -2493,18 +2493,11 @@ int32_t ADCApi::adc_initialize(adc_dev* dev, adc_init_param* init_param)
 	return 0;
 
 error:
-	if (st->adc_h)
-		no_os_alloc::no_os_free(st->adc_h);
-	if (st->jesd_param)
-		no_os_alloc::no_os_free(st->jesd_param);
-	if (st)
-		no_os_alloc::no_os_free(st);
+	/* dev, st, adc_h and jesd_param are owned by ADCConfig. */
 	if (dev->gpio_powerdown)
 		no_os_gpio::no_os_gpio_remove(dev->gpio_powerdown);
 	if (dev->spi_desc)
 		no_os_spi::no_os_spi_remove(dev->spi_desc);
-	if (dev)
-		no_os_alloc::no_os_free(dev);
 
 	return ret;
 }

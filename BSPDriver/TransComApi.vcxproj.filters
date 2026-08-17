@@ -90,12 +90,6 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RTSA.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DataRead.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Global.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -141,9 +135,6 @@
     <ClInclude Include="resource2.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RTSACLi.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="CommonCLI.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -165,6 +156,13 @@
     <ClInclude Include="PscanApi.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="FfmApi.h"><Filter>头文件</Filter></ClInclude>
+    <ClInclude Include="FfmConfigurator.h"><Filter>头文件</Filter></ClInclude>
+    <ClInclude Include="FfmController.h"><Filter>头文件</Filter></ClInclude>
+    <ClInclude Include="FfmDataSource.h"><Filter>头文件</Filter></ClInclude>
+    <ClInclude Include="FfmDefs.h"><Filter>头文件</Filter></ClInclude>
+    <ClInclude Include="FfmHardwareProfile.h"><Filter>头文件</Filter></ClInclude>
+    <ClInclude Include="FfmSpectrumProcessor.h"><Filter>头文件</Filter></ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConvertHelper.cpp">
@@ -233,12 +231,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RTSA.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DataRead.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="MultiIQ.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -278,9 +270,6 @@
     <ClCompile Include="MultiChannel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RTSACLi.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="CommonCLI.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -296,6 +285,13 @@
     <ClCompile Include="PscanApi.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="FfmApi.cpp"><Filter>源文件</Filter></ClCompile>
+    <ClCompile Include="FfmConfigurator.cpp"><Filter>源文件</Filter></ClCompile>
+    <ClCompile Include="FfmController.cpp"><Filter>源文件</Filter></ClCompile>
+    <ClCompile Include="FfmDataSource.cpp"><Filter>源文件</Filter></ClCompile>
+    <ClCompile Include="FfmHardwareProfile.cpp"><Filter>源文件</Filter></ClCompile>
+    <ClCompile Include="FfmSpectrumProcessor.cpp"><Filter>源文件</Filter></ClCompile>
+    <ClCompile Include="FfmSmokeTest.cpp"><Filter>源文件</Filter></ClCompile>
     <ClCompile Include="mian.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

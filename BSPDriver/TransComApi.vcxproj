@@ -32,27 +32,27 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>true</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>true</CLRSupport>
@@ -176,8 +176,14 @@
     <ClInclude Include="CommonManager.h" />
     <ClInclude Include="DACConfig.h" />
     <ClInclude Include="DataHolder.h" />
-    <ClInclude Include="DataRead.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="FfmApi.h" />
+    <ClInclude Include="FfmConfigurator.h" />
+    <ClInclude Include="FfmController.h" />
+    <ClInclude Include="FfmDataSource.h" />
+    <ClInclude Include="FfmDefs.h" />
+    <ClInclude Include="FfmHardwareProfile.h" />
+    <ClInclude Include="FfmSpectrumProcessor.h" />
     <ClInclude Include="HLJS386_HL.h" />
     <ClInclude Include="HLJS386_LL.h" />
     <ClInclude Include="MultiChannel.h" />
@@ -192,8 +198,6 @@
     <ClInclude Include="RF12.h" />
     <ClInclude Include="RFControl.h" />
     <ClInclude Include="RPU44.h" />
-    <ClInclude Include="RTSA.h" />
-    <ClInclude Include="RTSACLi.h" />
     <ClInclude Include="Si5386A_819d2M_10M.h" />
     <ClInclude Include="Si5386A_1d2288G_100M.h" />
     <ClInclude Include="Si5386A_1d2288G_10M.h" />
@@ -229,8 +233,14 @@
     <ClCompile Include="CommonManager.cpp" />
     <ClCompile Include="DACConfig.cpp" />
     <ClCompile Include="DataHolder.cpp" />
-    <ClCompile Include="DataRead.cpp" />
     <ClCompile Include="Global.cpp" />
+    <ClCompile Include="FfmApi.cpp" />
+    <ClCompile Include="FfmConfigurator.cpp" />
+    <ClCompile Include="FfmController.cpp" />
+    <ClCompile Include="FfmDataSource.cpp" />
+    <ClCompile Include="FfmHardwareProfile.cpp" />
+    <ClCompile Include="FfmSpectrumProcessor.cpp" />
+    <ClCompile Include="FfmSmokeTest.cpp" />
     <ClCompile Include="HLJS386_HL.cpp" />
     <ClCompile Include="DAC_Api.cpp" />
     <ClCompile Include="ADC_Api.cpp" />
@@ -256,8 +266,6 @@
     <ClCompile Include="RF12.cpp" />
     <ClCompile Include="RFControl.cpp" />
     <ClCompile Include="RPU44.cpp" />
-    <ClCompile Include="RTSA.cpp" />
-    <ClCompile Include="RTSACLi.cpp" />
     <ClCompile Include="Sweep.cpp" />
     <ClCompile Include="SpectrumSweep.cpp" />
     <ClCompile Include="SpectrumSweepFft.cpp" />

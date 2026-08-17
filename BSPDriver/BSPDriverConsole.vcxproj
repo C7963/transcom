@@ -22,13 +22,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -104,10 +104,16 @@
     <ClInclude Include="DACConfig.h" />
     <ClInclude Include="DAC_Api.h" />
     <ClInclude Include="DataHolder.h" />
-    <ClInclude Include="DataRead.h" />
     <ClInclude Include="Device_Address.h" />
     <ClInclude Include="Device_Data.h" />
     <ClInclude Include="Device_MEM32.h" />
+    <ClInclude Include="FfmApi.h" />
+    <ClInclude Include="FfmConfigurator.h" />
+    <ClInclude Include="FfmController.h" />
+    <ClInclude Include="FfmDataSource.h" />
+    <ClInclude Include="FfmDefs.h" />
+    <ClInclude Include="FfmHardwareProfile.h" />
+    <ClInclude Include="FfmSpectrumProcessor.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="HLJS386_HL.h" />
     <ClInclude Include="HLJS386_LL.h" />
@@ -130,8 +136,6 @@
     <ClInclude Include="RF12.h" />
     <ClInclude Include="RFControl.h" />
     <ClInclude Include="RPU44.h" />
-    <ClInclude Include="RTSA.h" />
-    <ClInclude Include="RTSACLi.h" />
     <ClInclude Include="SpectrumSweep.h" />
     <ClInclude Include="SpectrumSweepFft.h" />
     <ClInclude Include="Sweep.h" />
@@ -157,10 +161,16 @@
     <ClCompile Include="DACConfig.cpp" />
     <ClCompile Include="DAC_Api.cpp" />
     <ClCompile Include="DataHolder.cpp" />
-    <ClCompile Include="DataRead.cpp" />
     <ClCompile Include="Device_Address.cpp" />
     <ClCompile Include="Device_Data.cpp" />
     <ClCompile Include="Device_MEM32.cpp" />
+    <ClCompile Include="FfmApi.cpp" />
+    <ClCompile Include="FfmConfigurator.cpp" />
+    <ClCompile Include="FfmController.cpp" />
+    <ClCompile Include="FfmDataSource.cpp" />
+    <ClCompile Include="FfmHardwareProfile.cpp" />
+    <ClCompile Include="FfmSpectrumProcessor.cpp" />
+    <ClCompile Include="FfmSmokeTest.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="HLJS386_HL.cpp" />
     <ClCompile Include="HLJS386_LL.cpp" />
@@ -182,7 +192,6 @@
     <ClCompile Include="RF12.cpp" />
     <ClCompile Include="RFControl.cpp" />
     <ClCompile Include="RPU44.cpp" />
-    <ClCompile Include="RTSA.cpp" />
     <ClCompile Include="SpectrumSweep.cpp" />
     <ClCompile Include="SpectrumSweepFft.cpp" />
     <ClCompile Include="Sweep.cpp" />

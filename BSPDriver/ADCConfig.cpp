@@ -29,10 +29,16 @@ namespace Common {
             adc_dev_p->st = adc_st;
         }
         ~Impl() {
-            delete adc_st->adc_h;
+            if (adc_st != nullptr) {
+                delete adc_st->adc_h;
+                adc_st->adc_h = nullptr;
+            }
             delete adc_st;
+            adc_st = nullptr;
             delete adc_dev_p;
+            adc_dev_p = nullptr;
             delete jesd204b_param;
+            jesd204b_param = nullptr;
         }
     };
 
@@ -96,6 +102,11 @@ namespace Common {
         std::this_thread::sleep_for(10ms);
         impl_->last_nco_frequency = param->sampling_frequency_hz / 4;
         impl_->last_init_result = ADCApi::adc_initialize(impl_->adc_dev_p, param);
+        if (impl_->last_init_result < 0) {
+            delete[] param->ddc;
+            delete param;
+            return;
+        }
         std::this_thread::sleep_for(10ms);
         ADCApi::adc_register_write_direct(ADC_FPGA_DCM_CFG, 2);
 

@@ -10,7 +10,6 @@
 #include <cstring>
 #include <iomanip>
 #include <iostream>
-#include <string>
 #include <vector>
 #include <thread>
 #include <atomic>
@@ -63,9 +62,7 @@ namespace {
 
 } // namespace
 
-int RunFfmSmokeTest();
-
-int main(int argc, char* argv[])
+int main()
 {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
@@ -75,10 +72,6 @@ int main(int argc, char* argv[])
         std::cout << "[1] InitDevice..." << std::endl;
         Common::CommonManager& common = Common::CommonManager::Instance();
         common.InitDevice();
-
-        if (argc > 1 && std::string(argv[1]) == "--ffm") {
-            return RunFfmSmokeTest();
-        }
 
         // 2) PScan 上下文（按工程实际值填写）
         DATASERVICE::PscanOrderContext ctx;
@@ -103,7 +96,7 @@ int main(int argc, char* argv[])
             0,                  // Rfatt
             0,                  // Ifatt
             3,                  // Rfmode = NORM
-            0);                 // DetectorMode = AutoPeak
+            0);                 // DetectorMode = AutoPeak  改成88m 到108m
         DATASERVICE::PscanOrder order;
         if (!order.Handle(body, ctx)) {
             std::cout << "[FAIL] PscanOrder::Handle 失败（参数非法或 End<Start）" << std::endl;

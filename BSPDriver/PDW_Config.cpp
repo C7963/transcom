@@ -66,13 +66,13 @@ void PDWCtrl::SetChannelFreq(int64_t* Nfreq)
 {
 	for (int i = 0; i < N; i++)
 	{
-		if (Nfreq[i] >= Global::RTSAParameter.Centerfrquency)
+		if (Nfreq[i] >= Global::PdwParameters.Centerfrquency)
 		{
-			F_IFs[i] = 614.4e6 - Nfreq[i] + Global::RTSAParameter.Centerfrquency;
+			F_IFs[i] = 614.4e6 - Nfreq[i] + Global::PdwParameters.Centerfrquency;
 		}
 		else
 		{
-			F_IFs[i] = Global::RTSAParameter.Centerfrquency - Nfreq[i];
+			F_IFs[i] = Global::PdwParameters.Centerfrquency - Nfreq[i];
 		}
 	}
 }

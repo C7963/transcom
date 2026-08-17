@@ -86,7 +86,7 @@ namespace Global
 
 		void Clear() {
 			std::lock_guard<std::mutex> lock(mutex_);
-			// ��ն���
+			// ��ն���?
 			while (!queue_.empty()) {
 				queue_.pop();
 			}
@@ -116,23 +116,23 @@ namespace Global
 			std::chrono::duration<double> elapsed = now - last_time_;
 			last_time_ = now;
 
-			tokens_ += elapsed.count() * rate_; // ÿ����� rate_ ������
+			tokens_ += elapsed.count() * rate_; // ÿ�����?rate_ ������
 			if (tokens_ > capacity_) {
 				tokens_ = capacity_; // ���Ʋ�����Ͱ����
 			}
 
-			// 2. ��������Ƿ��㹻
+			// 2. ��������Ƿ���?
 			if (tokens_ >= tokens) {
 				tokens_ -= tokens;
-				return true; // �ɹ����ѣ�����ȴ�
+				return true; // �ɹ����ѣ�����ȴ�?
 			}
 			else {
 				// ������Ҫ�ȴ���ʱ��
 				double deficit = tokens - tokens_;
 				tokens_ = 0.0;
-				// ע�⣺�����ͷ������ٵȴ������������ʱ����
+				// ע�⣺�����ͷ������ٵȴ������������ʱ����?
 				lock.unlock();
-				// ��ȷ�ȴ������ʱ��
+				// ��ȷ�ȴ������ʱ��?
 				std::this_thread::sleep_for(std::chrono::duration<double>(deficit / rate_));
 				return false; // ���ѳɹ��������˵ȴ�
 			}
@@ -146,7 +146,7 @@ namespace Global
 		std::mutex mutex_;
 	};
 
-	//������ز���
+	//������ز���?
 	struct Nvme_io_argus {
 		string file_name;
 		uint32_t span;
@@ -164,8 +164,8 @@ namespace Global
 		complete
 	};
 
-	//RTSA��ز���
-	struct Parameter
+	//PDW ��ز���?
+	struct PdwParameter
 	{
 		uint32_t RBW;			    //	�ֱ��ʴ���
 		uint64_t Centerfrquency;	//	����Ƶ��
@@ -180,7 +180,7 @@ namespace Global
 		double IQCorrectValue;		//	IQ�Ĺ��ʲ���
 		double Span; 
 	};
-	extern Parameter RTSAParameter;
+	extern PdwParameter PdwParameters;
 
 	struct RefLevelResults {
 		int Att;
@@ -190,7 +190,7 @@ namespace Global
 	
 	enum class WorkMode
 	{
-		SWEEP, RTSA, STREAM, VSA, MULTI
+		SWEEP, STREAM, VSA, MULTI
 	};
 	struct DDC
 	{
@@ -205,11 +205,11 @@ namespace Global
 	extern double AmpAppend;			//  Span��RBW�Ĺ��ʲ���
 	extern uint32_t FFTGainOffset;  //���汶��
 	extern double ErrorValue;			//  CF��ز�����CF�仯ʱ��ȡ  
-	extern double BaseErrorValue;		//  �����������ӱ����
-	extern int CorrectValue;      //����Reflevel����Ĳ���
+	extern double BaseErrorValue;		//  �����������ӱ����?
+	extern int CorrectValue;      //����Reflevel����Ĳ���?
 	extern int IQPowerBaseError;
 	extern double IQFFTBaseError;
-	extern std::map<double, double> FreqErrorValue; //Ƶ��-����ֵ�
+	extern std::map<double, double> FreqErrorValue; //Ƶ��-����ֵ�?
 	extern std::map<double, double> FreqPreampErrorValue;
 	extern std::map<double, double> FreqATTErrorValue;
 	extern double SweepBaseErrorValue;
